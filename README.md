@@ -3,10 +3,10 @@
 * Latest meta-analysis release: [Release 3 (June 29, 2020)](https://www.covid19hg.org/results/)
 
 ## Summary
-We conducted statistical fine-mapping of the meta-analysis results, assuming a single causal variant per locus and a shared causal effect across studies. For each genome-wide significant locus (P < 5e-8; 3 Mb window around the lead variant), we applied 1) approximate Bayes factor (ABF) with a prior variance W = 0.04 ([Wakefield, J. 2009](https://onlinelibrary.wiley.com/doi/abs/10.1002/gepi.20359)) and 2) SuSiE with a number of single effects L = 1 ([Wang, G., et al. 2020](https://www.biorxiv.org/content/10.1101/501114v4)) to estimate posterior inclusion probability (PIP) and 95% credible sets.
+We conducted statistical fine-mapping of the meta-analysis results, assuming a single causal variant per locus and a shared causal effect across studies. For each genome-wide significant locus (P < 5e-8; 3 Mb window around the lead variant), we applied approximate Bayes factor (ABF) with a prior variance W = 0.04 ([Wakefield, J. 2009](https://onlinelibrary.wiley.com/doi/abs/10.1002/gepi.20359)) to estimate posterior inclusion probability (PIP) and 95% credible sets. We observed the variants in 95% CS at the 3p21.31 signal are in very tight LD (r2 > 0.9) across multiple populations, suggesting it might be challenging to disentangle them apart statistically. Although ABF estimates PIP = 0.85 for the lead variant of ANA_C2_V2, we note that this seems suspicious given the LD pattern in a population and is likely due to biases from different phenotyping/genotyping/imputation across studies.
 
 ## Results
-Results include both numerical tables and locuszoom plots.
+Results include both numerical tables and locuszoom-like plots.
 
 ### Table headers
 * `trait`: the whole analysis name including the release date (e.g., `COVID19_HGI_ANA_B2_V2_20200629`)
@@ -23,7 +23,7 @@ Results include both numerical tables and locuszoom plots.
 * `p_het`: Cochran's Q heterogeneity test p-value from meta-analysis (`all_inv_var_het_p` field)
 * `n_studies`: number of studies from meta-analysis (`all_meta_N` field)
 * `cs`: 95% credible set (`1` if in CS and `-1` if not)
-* `lbf`: log Bayes factor (ABF only)
+* `lbf`: log Bayes factor
 * `prob`: posterior inclusion probability (PIP)
 
 ### Locuszoom plots
@@ -52,7 +52,7 @@ The whole pipeline will be publicly available at https://github.com/mkanai/covid
 * Assumption: a shared causal effect across studies
     * Previous studies suggest this is a reasonable assumption for most complex traits -- but, we are not entirely sure yet for this study.
     * The column `p_het` helps to identify potentially heterogeneous variants based on Cochran's Q test from meta-analysis.
-* We note that, even if the above assumptions are valid, biases due to different genotyping/imputation could still affect single-causal variant fine-mapping, and the results should be interpreted cautiously. For example, in `COVID19_HGI_ANA_C2_V2_20200629`, all the variants in 95% CS show nominal heterogeneity (`p_het` < 0.05; min(`p_het`) = 3.2e-4 for `chr3:45834967:G:GA`), suggesting there might be confounding.
+* We note that, even if the above assumptions are valid, biases due to different phenotyping/genotyping/imputation could still affect single-causal variant fine-mapping, and the results should be interpreted cautiously. For example, in `COVID19_HGI_ANA_C2_V2_20200629`, all the variants in 95% CS show nominal heterogeneity (`p_het` < 0.05; min(`p_het`) = 3.2e-4 for `chr3:45834967:G:GA`), suggesting the observed difference in PIP/marginal p-value is likely due to such biases given the LD pattern in a population.
 
 ## Authors
 * Masahiro Kanai (mkanai@broadinstitute.org)
