@@ -37,11 +37,10 @@ task preprocess {
             for (i = 1; i <= NF; i++) {
                 col[$i] = i
             }
-            print "${chromosome_col}", "${position_col}", "${allele1_col}", "${allele2_col}", "freq", "${beta_col}", "${se_col}", "${p_col}", "p_het", "n_studies"
+            print "${chromosome_col}", "${position_col}", "${allele1_col}", "${allele2_col}", "${freq_col}", "${beta_col}", "${se_col}", "${p_col}", "p_het", "n_studies", "n_samples"
         }
         NR > 1 {
-            freq = 0.1 # for now
-            print $col["${chromosome_col}"], $col["${position_col}"], $col["${allele1_col}"], $col["${allele2_col}"], freq, $col["${beta_col}"], $col["${se_col}"], $col["${p_col}"], $col["all_inv_var_het_p"], $col["all_meta_N"]
+            print $col["${chromosome_col}"], $col["${position_col}"], $col["${allele1_col}"], $col["${allele2_col}"], $col["${freq_col}"], $col["${beta_col}"], $col["${se_col}"], $col["${p_col}"], $col["all_inv_var_het_p"], $col["all_meta_N"], $col["all_meta_sample_N"]
         }
         ' > ${pheno}.sumstats.txt
 
@@ -75,7 +74,7 @@ task preprocess {
             --beta-col "${beta_col}" \
             --se-col "${se_col}" \
             --p-col "${p_col}" \
-            --extra-cols "p_het" "n_studies" \
+            --extra-cols "p_het" "n_studies" "n_samples" \
             --delimiter "${delimiter}" \
             --set-variant-id \
             --grch38 \
@@ -97,14 +96,6 @@ task preprocess {
             touch ${pheno}".lead_snps.txt"
             touch ${pheno}".lead_snps.txt"
             touch ${pheno}".bed"
-        else
-            # remove dummy maf field for now
-            for z in ${pheno}.*.z
-            do
-                cp $z $z.old
-                cut -d' ' -f6 --complement $z.old > $z
-                rm $z.old
-            done
         fi
 
     >>>

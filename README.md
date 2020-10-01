@@ -32,19 +32,19 @@ Results include both numerical tables and locuszoom-like plots.
 1. Manhattan plot
     * x-axis: genomic position (GRCh38)
     * y-axis: -log10(p)
-    * color: (best-guess weighted-average) r2 value to a lead variant (with maximum PIP) which we computed weighted average of r2 value in [gnomad v2.1.1](https://gnomad.broadinstitute.org/) based on the fraction of ancestral populations in the meta-analysis.
+    * color: (best-guess weighted-average) r2 value to a lead variant (with maximum PIP) which we computed weighted average of r2 value in [gnomAD v2.1.1](https://gnomad.broadinstitute.org/) based on the fraction of ancestral populations in the meta-analysis.
 2. PIP plot
     * x-axis: genomic position (GRCh38)
     * y-axis: PIP
     * color: in 99% CS or not
 3. r2 plot
     * x-axis: genomic position (GRCh38)
-    * y-axis: r2 value to a lead variant (with maximum PIP) in nine populations of [gnomad v2.1.1](https://gnomad.broadinstitute.org/).
+    * y-axis: r2 value to a lead variant (with maximum PIP) in nine populations of [gnomAD v2.1.1](https://gnomad.broadinstitute.org/).
     * color: Population
     * alpha: variants in 99% CS are plotted with full opacity, whereas those not in CS are dimmed.
 
 ## Methods
-The whole pipeline will be publicly available at https://github.com/mkanai/covid19-finemapping.
+The whole pipeline is publicly available at https://github.com/mkanai/covid19-finemapping.
 
 ## Known limitations
 * Assumption: a single causal variant per locus

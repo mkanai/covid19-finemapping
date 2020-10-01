@@ -15,8 +15,7 @@ task abf {
             --snp ${prefix}.abf.snp \
             --cred ${prefix}.abf.cred \
             --log ${prefix}.abf.log \
-            --prior-variance ${prior_variance} \
-            --coverage ${coverage}
+            --prior-variance ${prior_variance}
 
     >>>
 
