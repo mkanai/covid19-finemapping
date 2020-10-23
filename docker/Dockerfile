@@ -39,9 +39,11 @@ RUN pip install --no-cache cython && \
     pip install --no-cache numpy scipy pandas pybedtools
 
 # Add scripts
-COPY python/make_finemap_inputs.py /usr/local/bin/
-COPY R/run_abf.R /usr/local/bin/
-COPY R/run_susieR.R /usr/local/bin/
+COPY \
+    python/make_finemap_inputs.py \
+    R/run_abf.R \
+    R/run_susieR.R \
+    /usr/local/bin/
 RUN chmod +x /usr/local/bin/*.py /usr/local/bin/*.R
 
 VOLUME [ "/root/.config/gcloud" ]

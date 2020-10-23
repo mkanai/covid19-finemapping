@@ -90,6 +90,46 @@ task susie {
     }
 }
 
+task annotate {
+    File snp
+    File annotation_script
+    String prefix = basename(snp, ".snp")
+    String zones
+    String docker
+    Int cpu
+    Int mem
+
+    command <<<
+
+        cat << "__EOF__" > /usr/local/lib/python3.6/dist-packages/pyspark/conf/spark-defaults.conf
+        spark.hadoop.google.cloud.auth.service.account.enable true
+        spark.hadoop.fs.gs.requester.pays.mode AUTO
+        spark.hadoop.fs.gs.requester.pays.project.id encode-uk-biobank-restrict
+        __EOF__
+
+        pip3 install cython && pip3 install gnomad
+        PYSPARK_SUBMIT_ARGS="--conf spark.driver.memory=${mem}g pyspark-shell" \
+        python3 ${annotation_script} --snp ${snp} --out ${prefix}.ld.snp
+
+    >>>
+
+    output {
+        File ld_snp = prefix + ".ld.snp"
+
+    }
+
+    runtime {
+
+        docker: "${docker}"
+        cpu: "${cpu}"
+        memory: "${mem} GB"
+        disks: "local-disk 50 HDD"
+        zones: "${zones}"
+        preemptible: 2
+        noAddress: false
+    }
+}
+
 task combine {
     String pheno
     Int n_causal_snps
@@ -199,6 +239,11 @@ workflow finemap {
     Int n_causal_snps
     Array[File] zfiles
 
+    File annotation_script
+    String hail_docker
+    Int hail_cpu
+    Int hail_mem
+
     scatter (zfile in zfiles) {
 
         call abf {
@@ -210,10 +255,20 @@ workflow finemap {
                 n_samples=n_samples, var_y=var_y, n_causal_snps=n_causal_snps,
 
         }
+
+        call annotate as annotate_abf {
+            input: zones=zones, docker=hail_docker, cpu=hail_cpu, mem=hail_mem,
+                annotation_script=annotation_script, snp=abf.snp
+        }
+
+        call annotate as annotate_susie {
+            input: zones=zones, docker=hail_docker, cpu=hail_cpu, mem=hail_mem,
+                annotation_script=annotation_script, snp=abf.snp
+        }
     }
 
     call combine {
         input: zones=zones, docker=docker, pheno=pheno, n_causal_snps=n_causal_snps,
-            abf_snp=abf.snp, abf_cred=abf.cred, susie_snp=susie.snp, susie_cred=susie.cred
+            abf_snp=annotate_abf.ld_snp, abf_cred=abf.cred, susie_snp=annotate_susie.ld_snp, susie_cred=susie.cred
     }
 }

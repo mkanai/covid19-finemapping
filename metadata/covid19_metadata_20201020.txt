@@ -1,0 +1,11 @@
+analysis	phenotype	population	n_samples	n_cases	n_controls	path
+COVID19_HGI_A2_ALL_leave_23andme_20201020	very severe respiratory confirmed covid vs. population	ALL_leave_23andme	628238	4336	623902	gs://covid19-hg-public/20200915/results/20201020/COVID19_HGI_A2_ALL_leave_23andme_20201020.txt.gz
+COVID19_HGI_B1_ALL_20201020	hospitalized covid vs. not hospitalized covid	All	10908	2430	8478	gs://covid19-hg-public/20200915/results/20201020/COVID19_HGI_B1_ALL_20201020.txt.gz
+COVID19_HGI_B2_ALL_leave_23andme_20201020	hospitalized covid vs. population	ALL_leave_23andme	969689	7885	961804	gs://covid19-hg-public/20200915/results/20201020/COVID19_HGI_B2_ALL_leave_23andme_20201020.txt.gz
+COVID19_HGI_C1_ALL_leave_23andme_20201020	covid vs. lab/self-reported negative	ALL_leave_23andme	127879	11085	116794	gs://covid19-hg-public/20200915/results/20201020/COVID19_HGI_C1_ALL_leave_23andme_20201020.txt.gz
+COVID19_HGI_C2_ALL_leave_23andme_20201020	covid vs. population	ALL_leave_23andme	1388512	17965	1370547	gs://covid19-hg-public/20200915/results/20201020/COVID19_HGI_C2_ALL_leave_23andme_20201020.txt.gz
+COVID19_HGI_D1_ALL_20201020	predicted covid from self-reported symptoms vs. predicted or self-reported non-covid	All	38932	3204	35728	gs://covid19-hg-public/20200915/results/20201020/COVID19_HGI_D1_ALL_20201020.txt.gz
+COVID19_HGI_A2_ALL_20201020.10k	very severe respiratory confirmed covid vs. population	All	1403605	4933	1398672 gs://covid19-hg-public/20200915/results/20201020/COVID19_HGI_A2_ALL_20201020.10k.txt.gz
+COVID19_HGI_B2_ALL_20201020.10k	hospitalized covid vs. population	All	1745185	8638	1736547 gs://covid19-hg-public/20200915/results/20201020/COVID19_HGI_B2_ALL_20201020.10k.txt.gz
+COVID19_HGI_C1_ALL_20201020.10k	covid vs. lab/self-reported negative	All	242119	24057	218062  gs://covid19-hg-public/20200915/results/20201020/COVID19_HGI_C1_ALL_20201020.10k.txt.gz
+COVID19_HGI_C2_ALL_20201020.10k	covid vs. population	All	1502752	30937	1471815 gs://covid19-hg-public/20200915/results/20201020/COVID19_HGI_C2_ALL_20201020.10k.txt.gz

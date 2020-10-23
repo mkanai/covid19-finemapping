@@ -1,0 +1,7 @@
+analysis	phenotype	population	n_samples	n_cases	n_controls	path
+COVID19_HGI_A2_ALL_20200930	very severe respiratory confirmed covid vs. population	All	287444	2972	284472	gs://covid19-hg-public/20200915/results/20200930/COVID19_HGI_A2_ALL_20200930.txt.gz
+COVID19_HGI_B1_ALL_20200930	hospitalized covid vs. not hospitalized covid	All	7268	1389	5879	gs://covid19-hg-public/20200915/results/20200930/COVID19_HGI_B1_ALL_20200930.txt.gz
+COVID19_HGI_B2_ALL_20200930	hospitalized covid vs. population	All	1019301	6492	1012809	gs://covid19-hg-public/20200915/results/20200930/COVID19_HGI_B2_ALL_20200930.txt.gz
+COVID19_HGI_C1_ALL_20200930	covid vs. lab/self-reported negative	All	127637	11181	116456	gs://covid19-hg-public/20200915/results/20200930/COVID19_HGI_C1_ALL_20200930.txt.gz
+COVID19_HGI_C2_ALL_20200930	covid vs. population	All	1362941	17607	1345334	gs://covid19-hg-public/20200915/results/20200930/COVID19_HGI_C2_ALL_20200930.txt.gz
+COVID19_HGI_D1_ALL_20200930	predicted covid from self-reported symptoms vs. predicted or self-reported non-covid	All	20672	1777	18895	gs://covid19-hg-public/20200915/results/20200930/COVID19_HGI_D1_ALL_20200930.txt.gz

@@ -1,12 +1,12 @@
 # Statistical fine-mapping of the COVID-19 HGI meta-analysis
-* Analysis date: June 30, 2020
-* Latest meta-analysis release: [Release 3 (June 29, 2020)](https://www.covid19hg.org/results/)
+* Analysis date: Oct 22, 2020
+* Latest meta-analysis release: [Release 4 (Oct 20, 2020)](https://www.covid19hg.org/results/)
 
 ## Summary
-We conducted statistical fine-mapping of the meta-analysis results, assuming a single causal variant per locus and a shared causal effect across studies. For each locus with P < 1e-10 (3 Mb window around the lead variant), we applied approximate Bayes factor (ABF) with a prior variance W = 0.04 ([Wakefield, J. 2009](https://onlinelibrary.wiley.com/doi/abs/10.1002/gepi.20359)) to estimate posterior inclusion probability (PIP) and 95/99% credible sets. We observed the variants in CS at the 3p21.31 signal are in very tight LD (r2 > 0.9) across multiple populations, suggesting it might be challenging to disentangle them apart statistically. Although ABF estimates PIP = 0.85 for the lead variant of ANA_C2_V2, we note that the results should be interpreted cautiously given potential biases from different phenotyping/genotyping/imputation across studies.
+We conducted statistical fine-mapping of the meta-analysis results (full genome-wide results from the `leave_23andme` file), assuming a single causal variant per locus and a shared causal effect across studies. For each locus with P < 5e-8 (3 Mb window around the lead variant), we applied approximate Bayes factor (ABF) with a prior variance W = 0.04 ([Wakefield, J. 2009](https://onlinelibrary.wiley.com/doi/abs/10.1002/gepi.20359)) to estimate posterior inclusion probability (PIP) and 95/99% credible sets. Although ABF estimates several variants with high PIP, **we note that the results should be interpreted cautiously given potential biases from different phenotyping/genotyping/imputation across studies.** In particular, missing variants and heterogeneity among the cohorts could undermine meta-analysis fine-mapping significantly, as illustrated by the discrepancy between a manhattan plot vs. observed LD structure in gnomAD.
 
 ## Results
-Results include both numerical tables and locuszoom-like plots.
+Results include both numerical tables and locuszoom-like plots. Please download them from [the COVID-19 HGI website](https://www.covid19hg.org/).
 
 ### Table headers
 * `trait`: the whole analysis name including the release date (e.g., `COVID19_HGI_ANA_B2_V2_20200629`)
@@ -26,6 +26,10 @@ Results include both numerical tables and locuszoom-like plots.
 * `cs_99`: 99% credible set (`1` if in CS and `-1` if not)
 * `lbf`: log Bayes factor
 * `prob`: posterior inclusion probability (PIP)
+* `is_canonical_vep`: Whether the following VEP-annotated consequence is from a canonical transcript.
+* `most_severe`: Most severe consequence annotated by VEP
+* `gene_most_severe_gene`: Gene symbol that shows most severe consequence
+* `gnomad_lead_r2_{pop}`: r2 value in gnomAD to the lead variant in a region
 
 ### Locuszoom plots
 [Locuszoom](http://locuszoom.org/)-like plots were generated using our custom script. For each fine-mapped locus, we plotted the following panels:
